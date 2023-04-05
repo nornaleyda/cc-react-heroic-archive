@@ -5,6 +5,7 @@ import {
   Container,
   IconButton,
   InputBase,
+  Link,
   Menu,
   MenuItem,
   Toolbar,
@@ -14,7 +15,21 @@ import { Menu as MenuIcon, Search as SearchIcon } from "@mui/icons-material";
 import { useState } from "react";
 import { styled, alpha } from "@mui/material/styles";
 
-const pages = ["Home", "Characters", "About Us"];
+// const pages = ["Home", "Characters", "About Us"];
+const pages = [
+  {
+    title: "Home",
+    url: "/",
+  },
+  {
+    title: "Characters",
+    url: "/characters",
+  },
+  {
+    title: "About Us",
+    url: "/about-us",
+  },
+];
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -58,7 +73,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-function ResponsiveAppBar() {
+function Header() {
   const [anchorElNav, setAnchorElNav] = useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -102,8 +117,16 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.title} onClick={handleCloseNavMenu}>
+                  <Link
+                    href={page.url}
+                    component="a"
+                    sx={{ textDecoration: "none" }}
+                  >
+                    <Typography textAlign="center" color="black">
+                      {page.title}
+                    </Typography>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -111,11 +134,12 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
-                key={page}
+                key={page.title}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
+                href={page.url}
               >
-                {page}
+                {page.title}
               </Button>
             ))}
           </Box>
@@ -133,4 +157,4 @@ function ResponsiveAppBar() {
     </AppBar>
   );
 }
-export default ResponsiveAppBar;
+export default Header;
