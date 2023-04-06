@@ -11,3 +11,60 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.wrapper-container {
+  padding: 20px;
+}
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.first-box {
+  padding: 50px;
+  cursor: pointer;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
+}
+.second-box {
+  padding: 50px;
+  cursor: pointer;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
+}
+.third-box {
+  padding: 50px;
+  cursor: pointer;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
+}
+.fourth-box {
+  padding: 50px;
+  cursor: pointer;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-divider {
+  margin-left: 45px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+.btn-primary {
+  border-radius: 10px;
+  margin-top: 50px;
+  background-color: #dee2e6;
+  cursor: pointer;
+  padding: 20px;
+  border: none;
+}
+
+.btn:hover {
+  background-color: #ced4da;
+}
+
+.text-about {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
