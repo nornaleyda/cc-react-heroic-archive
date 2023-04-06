@@ -23,7 +23,7 @@ const pages = [
   },
   {
     title: "Characters",
-    url: "/characters",
+    url: "/Characters/",
   },
   {
     title: "About Us",
