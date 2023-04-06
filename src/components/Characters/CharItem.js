@@ -1,27 +1,21 @@
-import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import FaceIcon from "@mui/icons-material/Face";
+import './Characters/CharItem.css';
+
 
 function DisplayChar() {
-  const [dataArray, setDataArray] = useState([]);
+  const [heros, setHeros] = useState([]);
+  const [visible, setVisible] = useState(21);
 
-  const httpRequest = async () => {
-    try {
-      const response = await axios.get(
-        "https://akabab.github.io/superhero-api/api/all.json"
-      );
-      const page1 = response.data.slice(0, 21);
-      setDataArray(page1);
-      console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
+  const showMoreHero = () => {
+    setVisible((prevValue) => prevValue + 21);
   };
 
   useEffect(() => {
-    httpRequest();
+    fetch("https://akabab.github.io/superhero-api/api/all.json")
+      .then((res) => res.json())
+      .then((data) => setHeros(data));
   }, []);
 
   return (
@@ -31,7 +25,7 @@ function DisplayChar() {
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
-        {dataArray.map((hero) => (
+        {heros.slice(0, visible).map((hero) => (
           <Grid item xs={2} sm={4} md={1.7} key={hero}>
             <Box
               sx={{
@@ -74,6 +68,9 @@ function DisplayChar() {
           </Grid>
         ))}
       </Grid>
+      <button class="btn sky block" onClick={showMoreHero}>
+        Load more
+      </button>
     </Box>
   );
 }
