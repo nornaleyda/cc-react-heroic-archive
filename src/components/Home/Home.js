@@ -1,5 +1,20 @@
+import { Box, Container, Typography } from "@mui/material";
+import CharOfTheDay from "./CharOfTheDay";
+
 function Home() {
-  return <h2>The Heroic Archive</h2>;
+  return (
+    <Box>
+      <Container>
+        <Typography variant="h4" textAlign="center">
+          Welcome to
+        </Typography>
+        <Typography variant="h2" textAlign="center">
+          The Heroic Archive
+        </Typography>
+      </Container>
+      <CharOfTheDay />
+    </Box>
+  );
 }
 
 export default Home;
