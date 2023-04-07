@@ -1,36 +1,42 @@
-import { display } from "@mui/system";
-import ProfileCard from "./Card";
+import { Grid } from "@mui/material";
+import ProfileCard from "./ProfileCard";
 
-function AboutUs() {
-  return (
-    <div className="wrapper-container">
-      <div className="flex-container">
-        <div className="first-box">
-          <ProfileCard />
-        </div>
-        <div className="second-box">
-          <ProfileCard />
-        </div>
-        <div className="third-box">
-          <ProfileCard />
-        </div>
-        <div className="fourth-box">
-          <ProfileCard />
-        </div>
-      </div>
-      <div className="text-about">
-        <p>Lorem ergregeegege</p>
-        <p>Lorem gegegggeg</p>
-        <p>Lorem gegeggeeg</p>
-        <p>Lorem gegegeggeg</p>
-      </div>
-      <div className="btn-divider">
-        <button className="btn btn-primary">View More</button>
-        <button className="btn btn-primary">View More</button>
-        <button className="btn btn-primary">View More</button>
-        <button className="btn btn-primary">View More</button>
-      </div>
-    </div>
-  );
+const devDetails = [
+  {
+    id: 1,
+    name: "Mohd Hafiz Zabba",
+    biography:
+      "Watch out, villains - Hafiz is on the scene! Despite coming from a health science background, this self-taught coding genius has one thing in common with the Spider-Man - making websites. Starting his coding journey back in June 2022, he ventured out into the jungle of data analytics with Python. It wasn't long before Hafiz started swinging into web development, quickly mastering HTML, CSS, and JavaScript. Now, he's expanding his arsenal with React.js, Express.js, and Django. Whether you're a hero or a villain, Hafiz is the coder you want on your side!",
+    image: "",
+    },
+  {
+    id: 2,
+    name: "",
+    biography: "",
+    image: "",
+  },
+  {
+    id: 3,
+    name: "",
+    biography: "",
+    image: "",
+  },
+  {
+    id: 4,
+    name: "",
+    biography: "",
+    image: "",
+  },
+];
+
+export default function AboutUs() {
+  const renderDevDetails = devDetails.map((dev) => {
+    return (
+      <Grid item sm={12} md={6}>
+        <ProfileCard key={dev.id} developer={dev} />
+      </Grid>
+    );
+  });
+
+  return <Grid container>{renderDevDetails}</Grid>;
 }
-export default AboutUs;

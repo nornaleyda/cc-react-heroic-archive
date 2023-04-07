@@ -1,7 +1,7 @@
 import { Box, Container, Typography } from "@mui/material";
 import CharOfTheDay from "./CharOfTheDay";
 
-function Home() {
+export default function Home() {
   return (
     <Box>
       <Container>
@@ -16,5 +16,3 @@ function Home() {
     </Box>
   );
 }
-
-export default Home;

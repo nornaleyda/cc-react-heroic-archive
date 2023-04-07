@@ -1,13 +1,12 @@
-import Box from "@mui/joy/Box";
-import Card from "@mui/joy/Card";
-import CardCover from "@mui/joy/CardCover";
-import CardContent from "@mui/joy/CardContent";
-import Typography from "@mui/joy/Typography";
+import { Box, Card, CardCover, CardContent, Typography } from "@mui/joy";
 
-function ProfileCard() {
+export default function ProfileCard({ developer }) {
+  const { name, biography } = developer;
+
   return (
     <Box
       sx={{
+        display: "flex",
         perspective: "1000px",
         transition: "transform 0.5s",
         "& > div, & > div > div": {
@@ -30,7 +29,8 @@ function ProfileCard() {
         variant="outlined"
         sx={{
           minHeight: "280px",
-          width: 320,
+          minwidth: "375px",
+          width: "20vw",
           backgroundColor: "#000",
           borderColor: "#000",
         }}
@@ -55,12 +55,11 @@ function ProfileCard() {
           }}
         >
           <Typography level="h2" fontSize="lg" textColor="#fff" m={3}>
-            Johanan Samuel{" "}
+            {name}
           </Typography>
         </CardContent>
       </Card>
+      <Typography>{biography}</Typography>
     </Box>
   );
 }
-
-export default ProfileCard;
