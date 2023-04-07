@@ -1,6 +1,3 @@
-function Filter() {
-    return;
-  }
-  
-  export default Filter;
-  
+export default function Filter() {
+  return;
+}

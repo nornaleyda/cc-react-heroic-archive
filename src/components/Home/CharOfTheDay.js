@@ -1,10 +1,14 @@
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { CardActionArea } from "@mui/material";
+import {
+  Card,
+  CardActions,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Button,
+  Typography,
+} from "@mui/material";
 
-function CharOfTheDay() {
+export default function CharOfTheDay() {
   return (
     <Card sx={{ marginTop: 10, marginRight: 20, marginLeft: 20 }}>
       <CardActionArea sx={{ display: "flex" }}>
@@ -47,5 +51,3 @@ function CharOfTheDay() {
     </Card>
   );
 }
-
-export default CharOfTheDay;
