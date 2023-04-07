@@ -12,7 +12,7 @@ export default function CharItem({ char }) {
     connections,
     images,
   } = char;
-
+ 
   return (
     <Box
       sx={{
