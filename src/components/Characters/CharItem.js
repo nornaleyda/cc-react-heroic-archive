@@ -16,7 +16,7 @@ export default function CharItem({ char }) {
   const handleClick = (char) => {
     console.log(char);
   };
-
+ 
   return (
     <Box
       sx={{
