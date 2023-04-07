@@ -1,11 +1,13 @@
 import {
+  Box,
   Card,
-  CardActions,
+  CardActionArea,
   CardActionArea,
   CardContent,
   CardMedia,
-  Button,
+  Container,
   Typography,
+  LinearProgress,
 } from "@mui/material";
 
 export default function CharOfTheDay() {
@@ -19,26 +21,68 @@ export default function CharOfTheDay() {
           image="https://akabab.github.io/superhero-api/api/images/lg/3-abin-sur.jpg"
           alt="character of the day"
         />
+
         <CardContent sx={{ flex: "1 1 50%", width: "100%" }}>
           <Typography gutterBottom variant="h2" component="div">
             Abin Sur
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            <label for="file">intelligence:</label>
-            <progress id="file" value="50" max="100">
-              {" "}
-              32%{" "}
-            </progress>
-            <br />
-            
-            strength: 90, <br />
-            speed: 53, <br />
-            durability: 64,
-            <br />
-            power: 99, <br />
-            combat: 65
+          <Typography sx={{ width: "100%" }}>
+              <label sx={{ width: "200px", textAlign: "right"}}>
+                Intelligence:
+              </label>
+              <LinearProgress
+                sx={{ height: 15, borderRadius: 5 }}
+                variant="determinate"
+                value={50}
+              />
+              <br />
+              <label sx={{ width: "200px", textAlign: "right"}}>
+                Strength:
+              </label>
+              <LinearProgress
+                sx={{ height: 15, borderRadius: 5 }}
+                variant="determinate"
+                value={90}
+              />
+              <br />
+              <label sx={{ width: "200px", textAlign: "right"}}>
+                Speed:
+              </label>
+              <LinearProgress
+                sx={{ height: 15, borderRadius: 5 }}
+                variant="determinate"
+                value={53}
+              />
+              <br />
+              <label sx={{ width: "200px", textAlign: "right"}}>
+                Durability:
+              </label>
+              <LinearProgress
+                sx={{ height: 15, borderRadius: 5 }}
+                variant="determinate"
+                value={64}
+              />
+              <br />
+              <label sx={{ width: "200px", textAlign: "right"}}>
+                Power:
+              </label>
+              <LinearProgress
+                sx={{ height: 15, borderRadius: 5 }}
+                variant="determinate"
+                value={99}
+              />
+              <br />
+              <label sx={{ width: "200px", textAlign: "right"}}>
+                Combat:
+              </label>
+              <LinearProgress
+                sx={{ height: 15, borderRadius: 5 }}
+                variant="determinate"
+                value={65}
+              />
           </Typography>
         </CardContent>
+
         <CardContent sx={{ flex: "1 1 50%", width: "100%" }}>
           <Typography variant="body2" color="text.secondary">
             Abin Sur or also know as Lagzia was born in Unggara. First Appearing
