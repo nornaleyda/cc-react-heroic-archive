@@ -11,20 +11,20 @@ const devDetails = [
     },
   {
     id: 2,
-    name: "",
+    name: "Johanan Samuel",
     biography: "",
     image: "",
   },
   {
     id: 3,
-    name: "",
-    biography: "",
+    name: "Nornaleyda Rosli",
+    biography: "Norna's superpower is her proficiency in coding languages. Armed with a bachelor's degree in Science Computer: Multimedia Computer, she quickly mastered HTML, CSS, and Javascript. Now, Norna is focused on expanding her abilities with React.js, Typescript, and sass in order to become the ultimate front-end developer. With her unwavering determination and unstoppable drive to save the world, Norna is a true hero in the making.",
     image: "",
   },
   {
     id: 4,
-    name: "",
-    biography: "",
+    name: "Nurul Farhana Alias",
+    biography: "Hana, the villain with a knack for technology, has used her skills to cause chaos in the digital realm. She's a master of HTML, CSS, and JavaScript and has a deep understanding of frontend frameworks and libraries, such as React. Her cunning problem-solving skills and strategic mind make her a formidable opponent to any superhero. Hana stays up-to-date with the latest frontend development trends and techniques, giving her a significant advantage in her villainous pursuits.",
     image: "",
   },
 ];
