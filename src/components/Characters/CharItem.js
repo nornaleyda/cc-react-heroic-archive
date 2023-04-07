@@ -10,9 +10,13 @@ export default function CharItem({ char }) {
     biography,
     work,
     connections,
-    images,
+    images,Abraxas
   } = char;
-
+  
+  const handleClick = (char) => {
+    console.log(char);
+  };
+ 
   return (
     <Box
       sx={{
@@ -47,6 +51,7 @@ export default function CharItem({ char }) {
           opacity: [0.9, 0.8, 0.7],
         },
       }}
+      onClick={() => handleClick(char)}
     >
       <Typography className="hero-name">{name}</Typography>
       <Typography className="hero-race">{appearance.race}</Typography>
