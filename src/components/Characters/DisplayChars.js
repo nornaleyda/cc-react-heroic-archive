@@ -1,50 +1,53 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-import { Box, Button, Grid } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import CharItem from "./CharItem";
+import { useCharsContext } from "../../context/CharsContext";
 
 export default function DisplayChars() {
-  const [heroes, setHeroes] = useState([]);
-  const [visibleHeroes, setVisibleHeroes] = useState(24);
+  const { charList, retrieveChars } = useCharsContext();
+  const [visibleChars, setVisibleChars] = useState(24);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const showMoreHeroes = () => {
-    setVisibleHeroes(visibleHeroes + 24);
-  };
-
-  // Fetch data from API
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(
-        "https://akabab.github.io/superhero-api/api/all.json"
-      );
-      setHeroes(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
   useEffect(() => {
-    fetchData();
+    setIsLoading(true);
+    retrieveChars()
+      .then(() => setIsLoading(false))
+      .catch((error) => {
+        console.error(error);
+        setIsLoading(false);
+      });
   }, []);
 
   // Render individual character
-  const renderHeroItem = heroes.slice(0, visibleHeroes).map((hero) => {
+  const renderCharItem = charList.slice(0, visibleChars).map((char) => {
     return (
       <Grid item xs={6} sm={3} md={2.4} lg={1.5}>
-        <CharItem char={hero} key={hero.id} />
+        <CharItem char={char} key={char.id} />
       </Grid>
     );
   });
 
+  // Load more characters
+  const showMoreChars = () => {
+    setVisibleChars(visibleChars + 24);
+  };
+
   return (
     <Box textAlign="center">
-      <Grid container>{renderHeroItem}</Grid>
-      <Button
-        variant="contained"
-        onClick={showMoreHeroes}
-        sx={{ maxWidth: "50vw", width: "100vw", minWidth: "375px" }}
-      >
-        Load More
-      </Button>
+      {isLoading ? (
+        <Typography>Loading...</Typography>
+      ) : (
+        <>
+          <Grid container>{renderCharItem}</Grid>
+          <Button
+            variant="contained"
+            onClick={showMoreChars}
+            sx={{ maxWidth: "50vw", width: "100vw", minWidth: "375px" }}
+          >
+            Load More
+          </Button>
+        </>
+      )}
     </Box>
   );
 }

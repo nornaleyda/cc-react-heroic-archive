@@ -1,11 +1,8 @@
 import {
-  Box,
   Card,
-  CardActionArea,
   CardActionArea,
   CardContent,
   CardMedia,
-  Container,
   Typography,
   LinearProgress,
 } from "@mui/material";
@@ -27,59 +24,51 @@ export default function CharOfTheDay() {
             Abin Sur
           </Typography>
           <Typography sx={{ width: "100%" }}>
-              <label sx={{ width: "200px", textAlign: "right"}}>
-                Intelligence:
-              </label>
-              <LinearProgress
-                sx={{ height: 15, borderRadius: 5 }}
-                variant="determinate"
-                value={50}
-              />
-              <br />
-              <label sx={{ width: "200px", textAlign: "right"}}>
-                Strength:
-              </label>
-              <LinearProgress
-                sx={{ height: 15, borderRadius: 5 }}
-                variant="determinate"
-                value={90}
-              />
-              <br />
-              <label sx={{ width: "200px", textAlign: "right"}}>
-                Speed:
-              </label>
-              <LinearProgress
-                sx={{ height: 15, borderRadius: 5 }}
-                variant="determinate"
-                value={53}
-              />
-              <br />
-              <label sx={{ width: "200px", textAlign: "right"}}>
-                Durability:
-              </label>
-              <LinearProgress
-                sx={{ height: 15, borderRadius: 5 }}
-                variant="determinate"
-                value={64}
-              />
-              <br />
-              <label sx={{ width: "200px", textAlign: "right"}}>
-                Power:
-              </label>
-              <LinearProgress
-                sx={{ height: 15, borderRadius: 5 }}
-                variant="determinate"
-                value={99}
-              />
-              <br />
-              <label sx={{ width: "200px", textAlign: "right"}}>
-                Combat:
-              </label>
-              <LinearProgress
-                sx={{ height: 15, borderRadius: 5 }}
-                variant="determinate"
-                value={65}
-              />
+            <label sx={{ width: "200px", textAlign: "right" }}>
+              Intelligence:
+            </label>
+            <LinearProgress
+              sx={{ height: 15, borderRadius: 5 }}
+              variant="determinate"
+              value={50}
+            />
+            <br />
+            <label sx={{ width: "200px", textAlign: "right" }}>Strength:</label>
+            <LinearProgress
+              sx={{ height: 15, borderRadius: 5 }}
+              variant="determinate"
+              value={90}
+            />
+            <br />
+            <label sx={{ width: "200px", textAlign: "right" }}>Speed:</label>
+            <LinearProgress
+              sx={{ height: 15, borderRadius: 5 }}
+              variant="determinate"
+              value={53}
+            />
+            <br />
+            <label sx={{ width: "200px", textAlign: "right" }}>
+              Durability:
+            </label>
+            <LinearProgress
+              sx={{ height: 15, borderRadius: 5 }}
+              variant="determinate"
+              value={64}
+            />
+            <br />
+            <label sx={{ width: "200px", textAlign: "right" }}>Power:</label>
+            <LinearProgress
+              sx={{ height: 15, borderRadius: 5 }}
+              variant="determinate"
+              value={99}
+            />
+            <br />
+            <label sx={{ width: "200px", textAlign: "right" }}>Combat:</label>
+            <LinearProgress
+              sx={{ height: 15, borderRadius: 5 }}
+              variant="determinate"
+              value={65}
+            />
           </Typography>
         </CardContent>
 
