@@ -15,7 +15,7 @@ function ProfileCard() {
         },
         "&:hover": {
           "& > div": {
-            transform: "rotateY(15deg)",
+            transform: "rotateY(10deg)",
             "& > div:nth-child(2)": {
               transform: "scaleY(0.9) translate3d(20px, 30px, 40px)",
             },
@@ -55,7 +55,7 @@ function ProfileCard() {
           }}
         >
           <Typography level="h2" fontSize="lg" textColor="#fff" m={3}>
-            Johanan Samuel{" "}
+            Johanan{" "}
           </Typography>
         </CardContent>
       </Card>
