@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, LinearProgress, } from "@mui/material";
 import CharItem from "./CharItem";
 import { useCharsContext } from "../../context/CharsContext";
 
@@ -35,7 +35,7 @@ export default function DisplayChars() {
   return (
     <Box textAlign="center">
       {isLoading ? (
-        <Typography>Loading...</Typography>
+        <LinearProgress />
       ) : (
         <>
           <Grid container>{renderCharItem}</Grid>

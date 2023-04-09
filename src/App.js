@@ -8,8 +8,8 @@ import { CharsContextProvider } from "./context/CharsContext";
 export default function App() {
   return (
     <>
-      <Header />
       <CharsContextProvider>
+      <Header />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />

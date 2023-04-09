@@ -6,14 +6,14 @@ const CharsContext = createContext();
 export function CharsContextProvider({ children }) {
   const [charList, setCharList] = useState([]);
 
+  // Retrieve all characters
   const retrieveChars = async () => {
     try {
-      const response = await axios.get(
-        "https://akabab.github.io/superhero-api/api/all.json"
-      );
-      if (response.data) {
-        setCharList(response.data);
-      }
+      await axios
+        .get("https://akabab.github.io/superhero-api/api/all.json")
+        .then((response) => {
+          setCharList(response.data);
+        });
     } catch (error) {
       console.log(error);
     }
