@@ -10,13 +10,8 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import { Menu as MenuIcon, Search as SearchIcon } from "@mui/icons-material";
+import { Menu as MenuIcon } from "@mui/icons-material";
 import { useState } from "react";
-import {
-  Search,
-  SearchIconWrapper,
-  StyledInputBase,
-} from "../../styles/Header/HeaderStyles";
 
 const navigation = [
   {
@@ -103,15 +98,6 @@ export default function Header() {
               </Button>
             ))}
           </Box>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
         </Toolbar>
       </Container>
     </AppBar>

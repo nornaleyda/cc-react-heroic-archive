@@ -1,12 +1,26 @@
-import { Box } from "@mui/material";
-import DisplayChars from "./DisplayChars";
-import Filter from "./Filter";
+import { Box, Grid } from "@mui/material";
+import DisplayResults from "./DisplayResults/DisplayResults";
+import FilterByRace from "./FilterByRace";
+import SearchBar from "./SearchBar";
+import SortCharacters from "./SortCharacters";
 
 export default function Characters() {
   return (
     <Box>
-      <Filter />
-      <DisplayChars />
+      <Grid container>
+        <Grid>
+          <SortCharacters />
+        </Grid>
+        <Grid>
+          <FilterByRace />
+        </Grid>
+        <Grid>
+          <SearchBar />
+        </Grid>
+      </Grid>
+      <Grid>
+        <DisplayResults />
+      </Grid>
     </Box>
   );
 }
