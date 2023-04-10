@@ -14,16 +14,16 @@ export default function CharOfTheDay() {
   const { COTD, retrievesCOTD } = useCharsContext();
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    setIsLoading(true);
-    retrievesCOTD()
-      .then(() => setIsLoading(false))
-      .catch((error) => {
-        console.error(error);
-        setIsLoading(false);
-      });
-  }, []);
-  if (COTD) {
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   retrievesCOTD()
+  //     .then(() => setIsLoading(false))
+  //     .catch((error) => {
+  //       console.error(error);
+  //       setIsLoading(false);
+  //     });
+  // }, []);
+  // if (COTD) {
     return (
       <Card sx={{ marginTop: 10, marginRight: 20, marginLeft: 20 }}>
         <CardActionArea sx={{ display: "flex" }}>
@@ -37,7 +37,7 @@ export default function CharOfTheDay() {
 
           <CardContent sx={{ flex: "1 1 50%", width: "100%" }}>
             <Typography gutterBottom variant="h2" component="div">
-              {COTD.name}
+              {/* {COTD.name} */}
             </Typography>
             <Typography sx={{ width: "100%" }}>
               <label sx={{ width: "200px", textAlign: "right" }}>
@@ -92,11 +92,10 @@ export default function CharOfTheDay() {
 
           <CardContent sx={{ flex: "1 1 50%", width: "100%" }}>
             <Typography variant="body2" color="text.secondary">
-              {COTD.biography}
+              {/* {COTD.biography} */}
             </Typography>
           </CardContent>
         </CardActionArea>
       </Card>
     );
   }
-}
