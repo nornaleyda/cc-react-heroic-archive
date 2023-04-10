@@ -12,7 +12,7 @@ export function CharsContextProvider({ children }) {
   );
   const [searchInput, setSearchInput] = useState("");
   const [filteredResults, setFilteredResults] = useState(allCharacters);
-  
+
   // SORTING HOOKS CONTEXT
   const anchorRef = useRef(null);
   const [openPopper, togglePopper] = useToggle(false);
@@ -82,57 +82,6 @@ export function CharsContextProvider({ children }) {
     }
     togglePopper();
   };
-  const switchSorting = (sortType, sortOrder, data) => {
-    switch (sortType) {
-      case "INT":
-        data.sort((charA, charB) => {
-          return sortOrder
-            ? charB.powerstats.intelligence - charA.powerstats.intelligence
-            : charA.powerstats.intelligence - charB.powerstats.intelligence;
-        });
-        break;
-      case "STR":
-        data.sort((charA, charB) => {
-          return sortOrder
-            ? charB.powerstats.strength - charA.powerstats.strength
-            : charA.powerstats.strength - charB.powerstats.strength;
-        });
-        break;
-      case "SPD":
-        data.sort((charA, charB) => {
-          return sortOrder
-            ? charB.powerstats.speed - charA.powerstats.speed
-            : charA.powerstats.speed - charB.powerstats.speed;
-        });
-        break;
-      case "DUR":
-        data.sort((charA, charB) => {
-          return sortOrder
-            ? charB.powerstats.durability - charA.powerstats.durability
-            : charA.powerstats.durability - charB.powerstats.durability;
-        });
-        break;
-      case "PWR":
-        data.sort((charA, charB) => {
-          return sortOrder
-            ? charB.powerstats.power - charA.powerstats.power
-            : charA.powerstats.power - charB.powerstats.power;
-        });
-        break;
-      case "CMB":
-        data.sort((charA, charB) => {
-          return sortOrder
-            ? charB.powerstats.combat - charA.powerstats.combat
-            : charA.powerstats.combat - charB.powerstats.combat;
-        });
-        break;
-      default:
-        data.sort((charA, charB) => {
-          return sortOrder ? charB.id - charA.id : charA.id - charB.id;
-        });
-    }
-    return data;
-  };
 
   const contextValue = {
     anchorRef,
@@ -147,7 +96,6 @@ export function CharsContextProvider({ children }) {
     selectedIndex,
     sortingMethod,
     sortingOptions,
-    switchSorting,
     togglePopper,
   };
 

@@ -2,15 +2,11 @@ import { useEffect, useState } from "react";
 import { Box, Button, Grid, LinearProgress } from "@mui/material";
 import CharacterCard from "./CharacterCard";
 import { useCharsContext } from "../../../context/CharsContext";
+import { useSort } from "../../../hooks/useSort";
 
 export default function DisplayResults() {
-  const {
-    filteredResults,
-    retrieveCharacters,
-    searchInput,
-    sortingMethod,
-    switchSorting,
-  } = useCharsContext();
+  const { filteredResults, retrieveCharacters, searchInput, sortingMethod } =
+    useCharsContext();
   const [visibleChars, setVisibleChars] = useState(24);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -24,16 +20,15 @@ export default function DisplayResults() {
       });
   }, [searchInput]);
 
+  const dataCopy = [...filteredResults];
+  const sortCharacterCards = useSort(
+    sortingMethod.sort,
+    sortingMethod.reverseOrder,
+    dataCopy
+  );
+
   // Render individual character
   const renderCharItem = () => {
-    const dataCopy = [...filteredResults];
-
-    const sortCharacterCards = switchSorting(
-      sortingMethod.sort,
-      sortingMethod.reverseOrder,
-      dataCopy
-    );
-
     return sortCharacterCards.slice(0, visibleChars).map((char) => {
       return (
         <Grid item xs={6} sm={3} md={2.4} lg={1.5} key={char.id}>
