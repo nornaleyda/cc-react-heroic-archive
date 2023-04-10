@@ -3,7 +3,7 @@ import axios from "axios";
 import { Typography, LinearProgress } from "@mui/material";
 import { useParams } from "react-router-dom";
 
-export default function ViewChar() {
+export default function ViewCharacter() {
   const [character, setCharacter] = useState(null);
   const { id } = useParams();
 
