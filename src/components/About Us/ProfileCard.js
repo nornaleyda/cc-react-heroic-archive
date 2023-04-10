@@ -17,10 +17,10 @@ export default function ProfileCard({ developer }) {
           "&:hover": {
             "& > div": {
               transform: "rotateY(10deg)",
-              "& > div:nth-child(2)": {
+              "& > div:nth-of-type(2)": {
                 transform: "scaleY(0.9) translate3d(20px, 30px, 40px)",
               },
-              "& > div:nth-child(3)": {
+              "& > div:nth-of-type(3)": {
                 transform: "translate3d(45px, 50px, 40px)",
               },
             },
@@ -65,7 +65,7 @@ export default function ProfileCard({ developer }) {
       <div className="wrapper-container">
         <div className="text">
           <Typography className="text text-bold">
-            <h2>{name}</h2>
+            {name}
           </Typography>
           <Typography className="text">{biography}</Typography>
           <div className="sm-icons">
@@ -84,7 +84,7 @@ export default function ProfileCard({ developer }) {
             </a>
             <a href={url.linkedIn} alt="linkedln" target="new">
               <svg
-                enable-background="new 0 0 32 32"
+                enableBackground="new 0 0 32 32"
                 height="32px"
                 id="Layer_1"
                 version="1.0"
@@ -94,11 +94,11 @@ export default function ProfileCard({ developer }) {
               >
                 <g>
                   <circle
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                     cx="16"
                     cy="16"
                     fill="#007BB5"
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     r="16"
                   />
                   <g>
