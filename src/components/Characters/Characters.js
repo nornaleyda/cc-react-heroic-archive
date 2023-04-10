@@ -8,18 +8,20 @@ export default function Characters() {
   return (
     <Box>
       <Grid container>
-        <Grid>
-          <SortCharacters />
+        <Grid container>
+          <Grid>
+            <SearchBar />
+          </Grid>
+          <Grid>
+            <SortCharacters />
+          </Grid>
+          <Grid>
+            <FilterByRace />
+          </Grid>
         </Grid>
         <Grid>
-          <FilterByRace />
+          <DisplayResults />
         </Grid>
-        <Grid>
-          <SearchBar />
-        </Grid>
-      </Grid>
-      <Grid>
-        <DisplayResults />
       </Grid>
     </Box>
   );
