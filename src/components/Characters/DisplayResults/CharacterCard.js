@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 
-export default function CharItem({ char }) {
+export default function CharacterCard({ char }) {
   const {
     id,
     name,
@@ -14,7 +14,7 @@ export default function CharItem({ char }) {
   } = char;
   
   const handleClick = (char) => {
-    console.log(char);
+    console.info(char);
   };
  
   return (
