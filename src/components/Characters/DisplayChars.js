@@ -37,14 +37,35 @@ export default function DisplayChars() {
 
   return (
     <Box textAlign="center">
-      <Grid container>{renderHeroItem}</Grid>
-      <Button
-        variant="contained"
-        onClick={showMoreHeroes}
-        sx={{ maxWidth: "50vw", width: "100vw", minWidth: "375px" }}
-      >
-        Load More
-      </Button>
+      <Grid container spacing={2}>
+        {renderHeroItem}
+      </Grid>
+      {heroes.length > visibleHeroes ? (
+        <Button
+          variant="contained"
+          onClick={showMoreHeroes}
+          sx={{
+            height: "50px",
+            maxWidth: "50vw",
+            width: "100vw",
+            minWidth: "375px",
+            marginTop: "2rem",
+            marginBottom: "2rem",
+            borderRadius: "1px",
+            fontWeight: "bold",
+            backgroundColor: "#skyblue",
+            color: "#000",
+            boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
+            transition: "background-color 0.2s ease-out",
+            "&:hover": {
+              backgroundColor: "#f44336",
+              color: "#fff",
+            },
+          }}
+        >
+          Load More
+        </Button>
+      ) : null}
     </Box>
   );
 }

@@ -1,52 +1,117 @@
+import { useState, useEffect } from "react";
+import "./layout.scss";
 import {
   Card,
-  CardActions,
   CardActionArea,
   CardContent,
   CardMedia,
-  Button,
   Typography,
+  LinearProgress,
 } from "@mui/material";
 
 export default function CharOfTheDay() {
+  const [hero, setHero] = useState(null);
+
+  useEffect(() => {
+    async function fetchCharOfTheDay() {
+      const response = await fetch(
+        "https://akabab.github.io/superhero-api/api/all.json"
+      );
+      const data = await response.json();
+      const randomIndex = Math.floor(Math.random() * data.length);
+      setHero(data[randomIndex]);
+    }
+    fetchCharOfTheDay();
+  }, []);
+
   return (
-    <Card sx={{ marginTop: 10, marginRight: 20, marginLeft: 20 }}>
+    <Card
+      sx={{ marginTop: 10, marginRight: 20, marginLeft: 20, marginBottom: 20 }}
+    >
       <CardActionArea sx={{ display: "flex" }}>
-        <CardMedia
-          sx={{ flex: "1 1 50%" }}
-          component="img"
-          height="640"
-          image="https://akabab.github.io/superhero-api/api/images/lg/3-abin-sur.jpg"
-          alt="character of the day"
-        />
-        <CardContent sx={{ flex: "1 1 50%", width: "100%" }}>
-          <Typography gutterBottom variant="h2" component="div">
-            Abin Sur
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            <label for="file">intelligence:</label>
-            <progress id="file" value="50" max="100">
-              {" "}
-              32%{" "}
-            </progress>
-            <br />
-            
-            strength: 90, <br />
-            speed: 53, <br />
-            durability: 64,
-            <br />
-            power: 99, <br />
-            combat: 65
-          </Typography>
-        </CardContent>
-        <CardContent sx={{ flex: "1 1 50%", width: "100%" }}>
-          <Typography variant="body2" color="text.secondary">
-            Abin Sur or also know as Lagzia was born in Unggara. First Appearing
-            in Showcase #22 (October, 1959) by DC Comics, Abin Sur is a former
-            history professor that affiliate with the Green Lantern Corps, and
-            Black Lantern Corps.
-          </Typography>
-        </CardContent>
+        {hero ? (
+          <>
+            <CardMedia
+              sx={{ flex: "1 1 50%" }}
+              component="img"
+              height="640"
+              image={hero.images.sm}
+              alt="character of the day"
+            />
+
+            <CardContent sx={{ flex: "1 1 50%", width: "100%" }}>
+              <Typography gutterBottom variant="h1" component="div">
+                {hero.name}
+              </Typography>
+
+              <Typography variant="h6">Powerstats</Typography>
+
+              <Typography sx={{ width: "50%" }}>
+                <label sx={{ width: "200px", textAlign: "right" }}>
+                  Intelligence : {hero.powerstats.intelligence}%
+                </label>
+                <LinearProgress
+                  sx={{ height: 15, borderRadius: 5 }}
+                  variant="determinate"
+                  value={hero.powerstats.intelligence}
+                />
+                <br />
+                <label sx={{ width: "200px", textAlign: "right" }}>
+                  Strength : {hero.powerstats.strength}%
+                </label>
+                <LinearProgress
+                  sx={{ height: 15, borderRadius: 5 }}
+                  variant="determinate"
+                  value={hero.powerstats.strength}
+                />
+                <br />
+                <label sx={{ width: "200px", textAlign: "right" }}>
+                  Speed : {hero.powerstats.speed}%
+                </label>
+                <LinearProgress
+                  sx={{ height: 15, borderRadius: 5 }}
+                  variant="determinate"
+                  value={hero.powerstats.speed}
+                />
+                <br />
+                <label sx={{ width: "200px", textAlign: "right" }}>
+                  Durability : {hero.powerstats.durability}%
+                </label>
+                <LinearProgress
+                  sx={{ height: 15, borderRadius: 5 }}
+                  variant="determinate"
+                  value={hero.powerstats.durability}
+                />
+                <br />
+                <label sx={{ width: "200px", textAlign: "right" }}>
+                  Power : {hero.powerstats.power}%
+                </label>
+                <LinearProgress
+                  sx={{ height: 15, borderRadius: 5 }}
+                  variant="determinate"
+                  value={hero.powerstats.power}
+                />
+                <br />
+                <label sx={{ width: "200px", textAlign: "right" }}>
+                  Combat : {hero.powerstats.combat}%
+                </label>
+                <LinearProgress
+                  sx={{ height: 15, borderRadius: 5 }}
+                  variant="determinate"
+                  value={hero.powerstats.combat}
+                />
+              </Typography>
+            </CardContent>
+
+            <CardContent sx={{ flex: "1 1 50%", width: "100%" }}>
+              <Typography variant="body2" color="text.secondary">
+                {hero.biography.publisher}{" "}
+              </Typography>
+            </CardContent>
+          </>
+        ) : (
+          <p>Loading...</p>
+        )}
       </CardActionArea>
     </Card>
   );
