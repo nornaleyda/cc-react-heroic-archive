@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import ViewCharacter from "./components/Characters/Character/ViewCharacter";
 import { CharsContextProvider } from "./context/CharsContext";
+import "./styles/main.scss";
 
 export default function App() {
   return (

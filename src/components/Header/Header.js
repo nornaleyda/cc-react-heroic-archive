@@ -20,7 +20,7 @@ const navigation = [
   },
   {
     title: "Characters",
-    url: "/Characters/",
+    url: "/characters/",
   },
   {
     title: "About Us",
