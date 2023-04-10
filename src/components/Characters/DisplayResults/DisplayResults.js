@@ -27,9 +27,6 @@ export default function DisplayResults() {
       sortingMethod.reverseOrder,
       dataCopy
     );
-    console.log(sortCharacterCards, "sort");
-    console.log(dataCopy, "datacopy");
-    console.log(sortingMethod, "sortingmethod");
 
     return sortCharacterCards.slice(0, visibleChars).map((char) => {
       return (

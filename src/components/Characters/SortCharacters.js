@@ -30,9 +30,13 @@ export default function SortCharacters() {
   } = useCharsContext();
 
   const sortIcon = () => {
-    return sortingMethod.reverseOrder ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />
-  }
-  console.log(sortingMethod);
+    return sortingMethod.reverseOrder ? (
+      <ArrowDropDownIcon />
+    ) : (
+      <ArrowDropUpIcon />
+    );
+  };
+
   return (
     <Fragment>
       <ButtonGroup variant="contained" ref={anchorRef}>
@@ -40,7 +44,8 @@ export default function SortCharacters() {
           <SwapVertIcon />
         </Button>
         <Button onClick={handleSortButtonClick}>
-          {sortingOptions[selectedIndex]}<i>{sortIcon()}</i>
+          {sortingOptions[selectedIndex]}
+          <i>{sortIcon()}</i>
         </Button>
       </ButtonGroup>
       <Popper
