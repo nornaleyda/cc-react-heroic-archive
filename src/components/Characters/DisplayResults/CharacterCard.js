@@ -1,4 +1,6 @@
 import { Box, Typography } from "@mui/material";
+import {Link} from "react-router-dom";
+
 
 export default function CharacterCard({ char }) {
   const {
@@ -18,7 +20,8 @@ export default function CharacterCard({ char }) {
   };
  
   return (
-    <Box
+    <Link to ={`/character/${id}`}>
+    <Box 
       sx={{
         marginLeft: 2,
         marginRight: 2,
@@ -52,9 +55,10 @@ export default function CharacterCard({ char }) {
         },
       }}
       onClick={() => handleClick(char)}
-    >
+    > 
       <Typography className="hero-name">{name}</Typography>
       <Typography className="hero-race">{appearance.race}</Typography>
     </Box>
+    </Link>
   );
 }

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import "./layout.scss";
 import {
-  Box,
   Card,
   CardActionArea,
   CardContent,
