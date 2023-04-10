@@ -15,7 +15,7 @@ function ProfileCard() {
         },
         "&:hover": {
           "& > div": {
-            transform: "rotateY(10deg)",
+            transform: "rotateY(1deg)",
             "& > div:nth-child(2)": {
               transform: "scaleY(0.9) translate3d(20px, 30px, 40px)",
             },

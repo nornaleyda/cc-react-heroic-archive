@@ -1,5 +1,12 @@
-function Characters() {
-  return;
-}
+import { Box } from "@mui/material";
+import DisplayChars from "./DisplayChars";
+import Filter from "./Filter";
 
-export default Characters;
+export default function Characters() {
+  return (
+    <Box>
+      <Filter />
+      <DisplayChars />
+    </Box>
+  );
+}
