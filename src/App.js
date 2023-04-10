@@ -9,8 +9,8 @@ import "./styles/main.scss";
 export default function App() {
   return (
     <>
-      <Header />
       <CharsContextProvider>
+      <Header />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
