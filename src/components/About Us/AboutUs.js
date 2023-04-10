@@ -64,7 +64,7 @@ export default function AboutUs() {
         <h1 className="page-header">About Us</h1>
         <p className="page-header-p">
           About us is a long established fact that a reader will be distracted
-          by the readable content of a page when looking at its layout.
+          by the readable content of a page when looking at its.
         </p>
       </div>
       {renderDevDetails}
