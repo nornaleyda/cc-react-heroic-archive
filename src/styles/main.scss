@@ -1,3 +1,6 @@
+@import "./variable.scss";
+@import "./_mixins.scss";
+
 * {
   padding: 0;
   margin: 0;
@@ -34,8 +37,8 @@ code {
 }
 
 /* .wrapper-container:hover > .wrapper-container:not(:hover) {
-  filter: brightness(0.6) saturate(1) contrast(1.2) blur(5px);
-} */
+    filter: brightness(0.6) saturate(1) contrast(1.2) blur(5px);
+  } */
 
 .main-container {
   padding: 10px;
