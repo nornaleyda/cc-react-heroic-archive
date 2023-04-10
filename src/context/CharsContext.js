@@ -18,6 +18,8 @@ export function CharsContextProvider({ children }) {
     sort: sortingOptions[selectedIndex],
     reverseOrder: false,
   });
+  const [COTD, setCOTD] = useState(null);
+  const randomIndex = Math.random() * 562;
 
   // Retrieve all characters
   const retrieveCharacters = async () => {
