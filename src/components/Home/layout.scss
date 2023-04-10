@@ -1,212 +1,212 @@
-@import url("https://fonts.googleapis.com/css?family=Dekko|Lato:900|Rock+Salt");
-@import url("https://fonts.cdnfonts.com/css/extraoin-zhurdlyou-anarchy");
-@import url("https://fonts.cdnfonts.com/css/cartoon-queen");
-@import url("https://fonts.cdnfonts.com/css/comics");
+// @import url("https://fonts.googleapis.com/css?family=Dekko|Lato:900|Rock+Salt");
+// @import url("https://fonts.cdnfonts.com/css/extraoin-zhurdlyou-anarchy");
+// @import url("https://fonts.cdnfonts.com/css/cartoon-queen");
+// @import url("https://fonts.cdnfonts.com/css/comics");
 
-.header {
-  font-family: "Cartoon Queen", sans-serif;
-}
+// .header {
+//   font-family: "Cartoon Queen", sans-serif;
+// }
 
-body {
-  min-height: 100vh;
-  width: 100%;
-  background: #ffff;
-  /* center the content in the page (mainly horizontally) */
-  display: grid;
-  /* include the same texture used for the .bubble containers, but with notably less opacity */
-  background: url('data:image/svg+xml;utf8,<svg width="100" height="100" transform="rotate(0)" opacity="0.2" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g  fill="%23250E17"><circle cx="25" cy="25" r="12.5"/><circle cx="75" cy="75" r="12.5"/><circle cx="75" cy="25" r="12.5"/><circle cx="25" cy="75" r="12.5"/></g></svg>'),
-    #ffffff;
-  background-size: 10px, 100%;
-}
+// body {
+//   min-height: 100vh;
+//   width: 100%;
+//   background: #ffff;
+//   /* center the content in the page (mainly horizontally) */
+//   display: grid;
+//   /* include the same texture used for the .bubble containers, but with notably less opacity */
+//   background: url('data:image/svg+xml;utf8,<svg width="100" height="100" transform="rotate(0)" opacity="0.2" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g  fill="%23250E17"><circle cx="25" cy="25" r="12.5"/><circle cx="75" cy="75" r="12.5"/><circle cx="75" cy="25" r="12.5"/><circle cx="25" cy="75" r="12.5"/></g></svg>'),
+//     #ffffff;
+//   background-size: 10px, 100%;
+// }
 
-/* .bubble containers: add the texture above a solid background */
-.bubble {
-  /* cap the width */
-  max-width: 500px;
-  /* give ample whitespace around and inside of the container */
-  margin: 2rem 0;
-  padding: 0.2rem 1.25rem;
-  text-align: center;
-  font-family: "Dekko", cursive;
-  text-transform: uppercase;
-  font-size: 2rem;
-  letter-spacing: 0.2rem;
-  background: url('data:image/svg+xml;utf8,<svg width="100" height="100" transform="rotate(25)" opacity="0.3" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g  fill="%23250E17"><circle cx="25" cy="25" r="12.5"/><circle cx="75" cy="75" r="12.5"/><circle cx="75" cy="25" r="12.5"/><circle cx="25" cy="75" r="12.5"/></g></svg>'),
-    #fff;
-  background-size: 12px, 100%;
-  /* solid border */
-  border: 0.4rem solid #000;
-  /* position relative for the :before pseudo element */
-  position: relative;
-}
+// /* .bubble containers: add the texture above a solid background */
+// .bubble {
+//   /* cap the width */
+//   max-width: 500px;
+//   /* give ample whitespace around and inside of the container */
+//   margin: 2rem 0;
+//   padding: 0.2rem 1.25rem;
+//   text-align: center;
+//   font-family: "Dekko", cursive;
+//   text-transform: uppercase;
+//   font-size: 2rem;
+//   letter-spacing: 0.2rem;
+//   background: url('data:image/svg+xml;utf8,<svg width="100" height="100" transform="rotate(25)" opacity="0.3" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g  fill="%23250E17"><circle cx="25" cy="25" r="12.5"/><circle cx="75" cy="75" r="12.5"/><circle cx="75" cy="25" r="12.5"/><circle cx="25" cy="75" r="12.5"/></g></svg>'),
+//     #fff;
+//   background-size: 12px, 100%;
+//   /* solid border */
+//   border: 0.4rem solid #000;
+//   /* position relative for the :before pseudo element */
+//   position: relative;
+// }
 
-/* for the highlight container change the solid backgorund to a yellow-ish hue */
-.bubble--highlight {
-  background: url('data:image/svg+xml;utf8,<svg width="100" height="100" transform="rotate(25)" opacity="0.8" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g  fill="%23d68810"><circle cx="25" cy="25" r="12.5"/><circle cx="75" cy="75" r="12.5"/><circle cx="75" cy="25" r="12.5"/><circle cx="25" cy="75" r="12.5"/></g></svg>'),
-    #ffcd28;
-  background-size: 13px, 100%;
-  font-weight: 700;
-}
-/* for the highlight container always add an exclamation point */
-.bubble--highlight:after {
-  content: "!";
-}
-/* for every .bubble container add a solid background behind the container itself, slightly offset */
-.bubble:before {
-  content: "";
-  position: absolute;
-  left: -1rem;
-  top: 0.15rem;
-  width: 100%;
-  height: 100%;
-  /* with the same texture, but different color, for both the texture and the background */
-  background: url('data:image/svg+xml;utf8,<svg width="100" height="100" transform="rotate(35)" opacity="1" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g fill="%23250E17"><circle cx="25" cy="25" r="12.5"/><circle cx="75" cy="75" r="12.5"/><circle cx="75" cy="25" r="12.5"/><circle cx="25" cy="75" r="12.5"/></g></svg>'),
-    #000;
-  background-size: 12px, 100%;
-  border: 0.4rem solid #000;
-  z-index: -5;
-}
+// /* for the highlight container change the solid backgorund to a yellow-ish hue */
+// .bubble--highlight {
+//   background: url('data:image/svg+xml;utf8,<svg width="100" height="100" transform="rotate(25)" opacity="0.8" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g  fill="%23d68810"><circle cx="25" cy="25" r="12.5"/><circle cx="75" cy="75" r="12.5"/><circle cx="75" cy="25" r="12.5"/><circle cx="25" cy="75" r="12.5"/></g></svg>'),
+//     #ffcd28;
+//   background-size: 13px, 100%;
+//   font-weight: 700;
+// }
+// /* for the highlight container always add an exclamation point */
+// .bubble--highlight:after {
+//   content: "!";
+// }
+// /* for every .bubble container add a solid background behind the container itself, slightly offset */
+// .bubble:before {
+//   content: "";
+//   position: absolute;
+//   left: -1rem;
+//   top: 0.15rem;
+//   width: 100%;
+//   height: 100%;
+//   /* with the same texture, but different color, for both the texture and the background */
+//   background: url('data:image/svg+xml;utf8,<svg width="100" height="100" transform="rotate(35)" opacity="1" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g fill="%23250E17"><circle cx="25" cy="25" r="12.5"/><circle cx="75" cy="75" r="12.5"/><circle cx="75" cy="25" r="12.5"/><circle cx="25" cy="75" r="12.5"/></g></svg>'),
+//     #000;
+//   background-size: 12px, 100%;
+//   border: 0.4rem solid #000;
+//   z-index: -5;
+// }
 
-/* for the tag, add a lot of whitespace below the string, to include the name through the pseudo element */
-.tag {
-  margin-bottom: 2rem;
-  padding: 1rem 7.5rem 11rem;
-  border-radius: 30px;
-  font-size: 2rem;
-  color: #fff;
-  background: #f8012d;
-  text-align: center;
-  font-family: "Lato", sans-serif;
-  box-shadow: 0 1px 15px -7.5px #000000;
-  /* position relative for the pseudo element(s) */
-  position: relative;
-}
-.tag strong {
-  text-transform: uppercase;
-  font-size: 3.5rem;
-}
-/* with the :before pseudo element include a solid white background */
-.tag:before {
-  content: "";
-  position: absolute;
-  top: 9rem;
-  left: 2%;
-  width: 96%;
-  height: 9rem;
-  background: #fff;
-  /* border-radius mathing the .tag container */
-  border-radius: 0 0 30px 30px;
-}
-/* with the :after pseudo element add the name of the character */
-.tag:after {
-  content: "Peter Parker";
-  position: absolute;
-  top: 11.25rem;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  font-family: "Rock Salt", cursive;
-  font-size: 2rem;
-  letter-spacing: 0.25rem;
-  font-weight: 300;
-  font-weight: bold;
-  color: #000;
-}
+// /* for the tag, add a lot of whitespace below the string, to include the name through the pseudo element */
+// .tag {
+//   margin-bottom: 2rem;
+//   padding: 1rem 7.5rem 11rem;
+//   border-radius: 30px;
+//   font-size: 2rem;
+//   color: #fff;
+//   background: #f8012d;
+//   text-align: center;
+//   font-family: "Lato", sans-serif;
+//   box-shadow: 0 1px 15px -7.5px #000000;
+//   /* position relative for the pseudo element(s) */
+//   position: relative;
+// }
+// .tag strong {
+//   text-transform: uppercase;
+//   font-size: 3.5rem;
+// }
+// /* with the :before pseudo element include a solid white background */
+// .tag:before {
+//   content: "";
+//   position: absolute;
+//   top: 9rem;
+//   left: 2%;
+//   width: 96%;
+//   height: 9rem;
+//   background: #fff;
+//   /* border-radius mathing the .tag container */
+//   border-radius: 0 0 30px 30px;
+// }
+// /* with the :after pseudo element add the name of the character */
+// .tag:after {
+//   content: "Peter Parker";
+//   position: absolute;
+//   top: 11.25rem;
+//   left: 0;
+//   width: 100%;
+//   text-align: center;
+//   font-family: "Rock Salt", cursive;
+//   font-size: 2rem;
+//   letter-spacing: 0.25rem;
+//   font-weight: 300;
+//   font-weight: bold;
+//   color: #000;
+// }
 
-.container {
-  position: relative;
-  background-color: black;
-  margin-top: 0;
-}
+// .container {
+//   position: relative;
+//   background-color: black;
+//   margin-top: 0;
+// }
 
-.wrapper2 {
-  width: 80%; /* or any other fixed width */
-  margin: auto; /* set top and bottom margins to "auto", and left and right margins to "auto" */
-  display: block; /* enable flexbox layout */
-  align-items: center; /* center items vertically */
-  justify-content: center; /* center items horizontally */
-  position: relative;
-  height: 100%;
-}
+// .wrapper2 {
+//   width: 80%; /* or any other fixed width */
+//   margin: auto; /* set top and bottom margins to "auto", and left and right margins to "auto" */
+//   display: block; /* enable flexbox layout */
+//   align-items: center; /* center items vertically */
+//   justify-content: center; /* center items horizontally */
+//   position: relative;
+//   height: 100%;
+// }
 
-.wrapper {
-  // margin-top: 40vh;
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: 1fr;
-  font-size: 0;
-}
+// .wrapper {
+//   // margin-top: 40vh;
+//   display: grid;
+//   grid-gap: 10px;
+//   grid-template-columns: repeat(2, 1fr);
+//   grid-auto-rows: 1fr;
+//   font-size: 0;
+// }
 
-.hero-item,
-.standard-item {
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+// .hero-item,
+// .standard-item {
+//   background-position: center center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+// }
 
-.news-item {
-  display: inline-block;
-  min-height: 400px;
-  width: 50%;
-}
+// .news-item {
+//   display: inline-block;
+//   min-height: 400px;
+//   width: 50%;
+// }
 
-.hero-item {
-  // background-image: url('https://boombabyhome.files.wordpress.com/2021/06/dc-pride-header.jpg?w=1920&h=768&crop=1');
-  background-image: url("https://wegotthiscovered.com/wp-content/uploads/2022/08/dc-speedsters.jpeg");
-}
+// .hero-item {
+//   // background-image: url('https://boombabyhome.files.wordpress.com/2021/06/dc-pride-header.jpg?w=1920&h=768&crop=1');
+//   background-image: url("https://wegotthiscovered.com/wp-content/uploads/2022/08/dc-speedsters.jpeg");
+// }
 
-.standard-item:nth-child(2) {
-  background-image: url("https://i.kinja-img.com/gawker-media/image/upload/c_fill,f_auto,fl_progressive,g_center,h_675,pg_1,q_80,w_1200/onffi5uaxhindx673gpa.png");
-}
+// .standard-item:nth-child(2) {
+//   background-image: url("https://i.kinja-img.com/gawker-media/image/upload/c_fill,f_auto,fl_progressive,g_center,h_675,pg_1,q_80,w_1200/onffi5uaxhindx673gpa.png");
+// }
 
-.standard-item:nth-child(3) {
-  background-image: url("https://www.looper.com/img/gallery/15-times-comics-tried-ripping-off-the-joker-character/intro-1650649164.jpg");
-}
+// .standard-item:nth-child(3) {
+//   background-image: url("https://www.looper.com/img/gallery/15-times-comics-tried-ripping-off-the-joker-character/intro-1650649164.jpg");
+// }
 
-.standard-item:nth-child(4) {
-  background-image: url("https://wegotthiscovered.com/wp-content/uploads/2022/08/dc-speedsters.jpeg");
-}
+// .standard-item:nth-child(4) {
+//   background-image: url("https://wegotthiscovered.com/wp-content/uploads/2022/08/dc-speedsters.jpeg");
+// }
 
-@supports (display: grid) {
-  .news-item {
-    width: auto;
-    min-height: 0;
-  }
+// @supports (display: grid) {
+//   .news-item {
+//     width: auto;
+//     min-height: 0;
+//   }
 
-  .hero-item {
-    grid-column: 1 / span 2;
-    grid-row: 1 / 50;
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% calc(100% - 75px), 0 100%);
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 75px), 0 100%);
-  }
+//   .hero-item {
+//     grid-column: 1 / span 2;
+//     grid-row: 1 / 50;
+//     -webkit-clip-path: polygon(0 0, 100% 0, 100% calc(100% - 75px), 0 100%);
+//     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 75px), 0 100%);
+//   }
 
-  .standard-item:nth-child(2) {
-    grid-column: 1 / span 1;
-    grid-row: 50 / 100;
-    -webkit-clip-path: polygon(0 14%, 0 86%, 90% 81%, 100% 6%);
-    clip-path: polygon(0 14%, 0 86%, 90% 81%, 100% 6%);
-    margin-top: -73px;
-  }
+//   .standard-item:nth-child(2) {
+//     grid-column: 1 / span 1;
+//     grid-row: 50 / 100;
+//     -webkit-clip-path: polygon(0 14%, 0 86%, 90% 81%, 100% 6%);
+//     clip-path: polygon(0 14%, 0 86%, 90% 81%, 100% 6%);
+//     margin-top: -73px;
+//   }
 
-  .standard-item:nth-child(3) {
-    grid-column: 2 / span 1;
-    grid-row: 50 / 100;
-    -webkit-clip-path: polygon(13% 6%, 4% 84%, 100% 100%, 100% 0%);
-    clip-path: polygon(13% 6%, 4% 84%, 100% 100%, 100% 0%);
-    margin-top: -73px;
-    margin-left: -15%;
-    margin-bottom: 18px;
-  }
+//   .standard-item:nth-child(3) {
+//     grid-column: 2 / span 1;
+//     grid-row: 50 / 100;
+//     -webkit-clip-path: polygon(13% 6%, 4% 84%, 100% 100%, 100% 0%);
+//     clip-path: polygon(13% 6%, 4% 84%, 100% 100%, 100% 0%);
+//     margin-top: -73px;
+//     margin-left: -15%;
+//     margin-bottom: 18px;
+//   }
 
-  .standard-item:nth-child(4) {
-    grid-column: 1 / span 2;
-    grid-row: 100 / 150;
-    -webkit-clip-path: polygon(45% 0, 100% 15%, 100% 100%, 0 100%, 0 5%);
-    clip-path: polygon(45% 0, 100% 15%, 100% 100%, 0 100%, 0 5%);
-    margin-top: -107px;
-  }
-}
+//   .standard-item:nth-child(4) {
+//     grid-column: 1 / span 2;
+//     grid-row: 100 / 150;
+//     -webkit-clip-path: polygon(45% 0, 100% 15%, 100% 100%, 0 100%, 0 5%);
+//     clip-path: polygon(45% 0, 100% 15%, 100% 100%, 0 100%, 0 5%);
+//     margin-top: -107px;
+//   }
+// }
 
 .panel {
   background-color: #fff;
@@ -220,78 +220,78 @@ body {
   position: relative;
 }
 
-.top-left {
-  left: -6px;
-  position: absolute;
-  top: -2px;
-  transform: skew(-15deg);
-}
+// .top-left {
+//   left: -6px;
+//   position: absolute;
+//   top: -2px;
+//   transform: skew(-15deg);
+// }
 
-.bottom-right {
-  bottom: -2px;
-  position: absolute;
-  right: -6px;
-  transform: skew(-15deg);
-}
+// .bottom-right {
+//   bottom: -2px;
+//   position: absolute;
+//   right: -6px;
+//   transform: skew(-15deg);
+// }
 
-.speech {
-  background-color: #fff;
-  border: solid 2px #000;
-  border-radius: 12px;
-  display: inline-block;
-  margin: 0.5em;
-  padding: 0.5em 1em;
-  position: relative;
-}
+// .speech {
+//   background-color: #fff;
+//   border: solid 2px #000;
+//   border-radius: 12px;
+//   display: inline-block;
+//   margin: 0.5em;
+//   padding: 0.5em 1em;
+//   position: relative;
+// }
 
-.speech:before {
-  border: solid 12px transparent;
-  border-left: solid 12px #000;
-  border-top: solid 12px #000;
-  bottom: -24px;
-  content: "";
-  height: 0;
-  left: 24px;
-  position: absolute;
-  transform: skew(-15deg);
-  width: 0;
-}
+// .speech:before {
+//   border: solid 12px transparent;
+//   border-left: solid 12px #000;
+//   border-top: solid 12px #000;
+//   bottom: -24px;
+//   content: "";
+//   height: 0;
+//   left: 24px;
+//   position: absolute;
+//   transform: skew(-15deg);
+//   width: 0;
+// }
 
-.speech:after {
-  border: solid 10px transparent;
-  border-left: solid 10px #fff;
-  border-top: solid 10px #fff;
-  bottom: -19px;
-  content: "";
-  height: 0;
-  left: 27px;
-  position: absolute;
-  transform: skew(-15deg);
-  width: 0;
-}
+// .speech:after {
+//   border: solid 10px transparent;
+//   border-left: solid 10px #fff;
+//   border-top: solid 10px #fff;
+//   bottom: -19px;
+//   content: "";
+//   height: 0;
+//   left: 27px;
+//   position: absolute;
+//   transform: skew(-15deg);
+//   width: 0;
+// }
 
-.panel:nth-child(1) {
-  flex-basis: 400px;
-}
+// .panel:nth-child(1) {
+//   flex-basis: 400px;
+// }
 
-.comic {
-  display: flex;
-  flex-wrap: wrap;
-  font-family: "Comic Sans", cursive;
-  padding: 1vmin;
-}
+// .comic {
+//   display: flex;
+//   flex-wrap: wrap;
+//   font-family: "Comic Sans", cursive;
+//   padding: 1vmin;
+// }
 
-.panel {
-  background-color: #fff;
-  border: solid 2px #000;
-  box-shadow: 0 6px 6px -6px #000;
-  display: inline-block;
-  flex: 1 1;
-  height: 350px;
-  margin: 1vmin;
-  overflow: hidden;
-  position: relative;
-}
+// .panel {
+//   background-color: #fff;
+//   border: solid 2px #000;
+//   box-shadow: 0 6px 6px -6px #000;
+//   display: inline-block;
+//   flex: 1 1;
+//   height: 350px;
+//   margin: 1vmin;
+//   overflow: hidden;
+//   position: relative;
+// }
 
 .text-1 {
   background-color: #fff;
@@ -300,40 +300,40 @@ body {
   padding: 3px 10px;
 }
 
-.bottom-right {
-  bottom: -2px;
-  position: absolute;
-  right: -6px;
-  transform: skew(-15deg);
-}
+// .bottom-right {
+//   bottom: -2px;
+//   position: absolute;
+//   right: -6px;
+//   transform: skew(-15deg);
+// }
 
-.panel:nth-child(2) {
-  flex-basis: 200px;
-}
-.panel:nth-child(3) {
-  flex-basis: 200px;
-}
-.panel:nth-child(4) {
-  flex-basis: 200px;
-}
-.panel:nth-child(5) {
-  flex-basis: 200px;
-}
-.panel:nth-child(6) {
-  flex-basis: 200px;
-}
-.panel:nth-child(7) {
-  flex-basis: 400px;
-}
-.panel:nth-child(8) {
-  flex-basis: 200px;
-}
-.panel:nth-child(9) {
-  flex-basis: 200px;
-}
+// .panel:nth-child(2) {
+//   flex-basis: 200px;
+// }
+// .panel:nth-child(3) {
+//   flex-basis: 200px;
+// }
+// .panel:nth-child(4) {
+//   flex-basis: 200px;
+// }
+// .panel:nth-child(5) {
+//   flex-basis: 200px;
+// }
+// .panel:nth-child(6) {
+//   flex-basis: 200px;
+// }
+// .panel:nth-child(7) {
+//   flex-basis: 400px;
+// }
+// .panel:nth-child(8) {
+//   flex-basis: 200px;
+// }
+// .panel:nth-child(9) {
+//   flex-basis: 200px;
+// }
 
-/* background colours */
+// /* background colours */
 
-.panel:nth-child(4n + 1) {
-  background-image: radial-gradient(circle, lightblue, deepskyblue);
-}
+// .panel:nth-child(4n + 1) {
+//   background-image: radial-gradient(circle, lightblue, deepskyblue);
+// }
