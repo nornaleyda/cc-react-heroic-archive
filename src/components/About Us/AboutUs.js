@@ -2,6 +2,7 @@ import { Grid } from "@mui/material";
 import Footer from "./Footer";
 import ProfileCard from "./ProfileCard";
 import "../../styles/main.scss";
+import johanan from "../../images/joeee.jpeg";
 
 const devDetails = [
   {
@@ -20,7 +21,7 @@ const devDetails = [
     name: "Johanan Samuel",
     biography:
       "Johanan's journey to becoming a web development superhero began in his early years, where he excelled in Information Technology. During his Degree program, he added certificates in IT Support to upgrade his technical skills. With his knowledge in HTML, CSS, PHP and SQL, his commitment to stay on top of the latest trends like JavaScript, React, SASS and TypeScript, Johanan is a true hero in the world of web development.",
-    image: "",
+    image: johanan,
     url: {
       github: "https://github.com/joeeeee7",
       linkedIn: "https://www.linkedin.com/in/johanansamuel/",
