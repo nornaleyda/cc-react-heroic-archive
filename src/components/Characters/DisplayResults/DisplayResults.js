@@ -4,11 +4,10 @@ import CharacterCard from "./CharacterCard";
 import { useCharsContext } from "../../../context/CharsContext";
 
 export default function DisplayResults() {
-  const { filteredResults, retrieveCharacters, sortingMethod, switchSorting } =
+  const { filteredResults, retrieveCharacters, searchInput, sortingMethod, switchSorting } =
     useCharsContext();
   const [visibleChars, setVisibleChars] = useState(24);
   const [isLoading, setIsLoading] = useState(true);
-  const dataCopy = [...filteredResults];
 
   useEffect(() => {
     setIsLoading(true);
@@ -18,10 +17,12 @@ export default function DisplayResults() {
         console.error(error);
         setIsLoading(false);
       });
-  }, []);
+  }, [searchInput]);
 
   // Render individual character
   const renderCharItem = () => {
+    const dataCopy = [...filteredResults];
+
     const sortCharacterCards = switchSorting(
       sortingMethod.sort,
       sortingMethod.reverseOrder,
