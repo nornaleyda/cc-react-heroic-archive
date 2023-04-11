@@ -158,7 +158,7 @@ export default function CharOfTheDay() {
                   sx={{
                     margin: 5,
                     backgroundColor: "red",
-                    width: "35vw",
+                    width: "38vw",
                   }}
         >all character</Button>
       </Link>

@@ -22,11 +22,11 @@ export default function SortCharacters() {
     handleClosePopper,
     handleMenuItemClick,
     handleSortButtonClick,
-    handleTogglePopper,
     openPopper,
     selectedIndex,
     sortingMethod,
     sortingOptions,
+    togglePopper,
   } = useCharsContext();
 
   const sortIcon = () => {
@@ -40,7 +40,7 @@ export default function SortCharacters() {
   return (
     <Fragment>
       <ButtonGroup variant="contained" ref={anchorRef}>
-        <Button size="small" onClick={handleTogglePopper}>
+        <Button size="small" onClick={togglePopper}>
           <SwapVertIcon />
         </Button>
         <Button onClick={handleSortButtonClick}>

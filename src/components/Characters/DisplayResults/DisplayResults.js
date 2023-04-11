@@ -2,14 +2,19 @@ import { useEffect, useState } from "react";
 import { Box, Button, Grid, LinearProgress } from "@mui/material";
 import CharacterCard from "./CharacterCard";
 import { useCharsContext } from "../../../context/CharsContext";
+import { useSort } from "../../../hooks/useSort";
 
 export default function DisplayResults() {
   const {
-    filteredResults,
+    allCharacters,
     retrieveCharacters,
     searchInput,
+
+    filteredResults,
+    setFilteredResults,
+    raceFilters,
+
     sortingMethod,
-    switchSorting,
   } = useCharsContext();
   const [visibleChars, setVisibleChars] = useState(24);
   const [isLoading, setIsLoading] = useState(true);
@@ -17,23 +22,62 @@ export default function DisplayResults() {
   useEffect(() => {
     setIsLoading(true);
     retrieveCharacters()
-      .then(() => setIsLoading(false))
+      .then(() => {
+        const filteredData = allCharacters.filter((char) =>
+          raceFilters.length > 0
+            ? raceFilters.includes(char.appearance.race)
+            : allCharacters
+        );
+
+        console.log(filteredData, "filter");
+
+        // Filter the data based on user's input
+        if (searchInput !== "") {
+          const queriedData = filteredData.filter((char) => {
+            return char.name.toLowerCase().includes(searchInput.toLowerCase());
+          });
+          setFilteredResults(queriedData);
+        } else {
+          setFilteredResults(filteredData);
+        }
+
+        // Filter the data based on user's input
+        // if (searchInput !== "") {
+        //   const queriedData = allCharacters.filter((char) => {
+        //     return char.name.toLowerCase().includes(searchInput.toLowerCase());
+        //   });
+
+        // const filteredData = queriedData.filter((obj) =>
+        //   raceFilters.length > 0
+        //     ? raceFilters.every(
+        //         (filterTag) => obj.appearance.race === filterTag
+        //       )
+        //     : queriedData
+        // );
+
+        // console.log(filteredData, "filtered");
+
+        //   setFilteredResults(queriedData);
+        // } else {
+        //   setFilteredResults(allCharacters);
+        // }
+        setIsLoading(false);
+      })
       .catch((error) => {
         console.error(error);
         setIsLoading(false);
       });
-  }, [searchInput]);
+  }, [searchInput, raceFilters]);
+
+  const dataCopy = [...filteredResults];
+  const sortCharacterCards = useSort(
+    sortingMethod.sort,
+    sortingMethod.reverseOrder,
+    dataCopy
+  );
 
   // Render individual character
   const renderCharItem = () => {
-    const dataCopy = [...filteredResults];
-
-    const sortCharacterCards = switchSorting(
-      sortingMethod.sort,
-      sortingMethod.reverseOrder,
-      dataCopy
-    );
-
     return sortCharacterCards.slice(0, visibleChars).map((char) => {
       return (
         <Grid item xs={6} sm={3} md={2.4} lg={1.5} key={char.id}>
