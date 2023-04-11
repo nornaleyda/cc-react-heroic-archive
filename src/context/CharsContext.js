@@ -1,48 +1,37 @@
 import { createContext, useContext, useRef, useState } from "react";
 import axios from "axios";
+import { useToggle } from "../hooks/useToggle";
 
 const CharsContext = createContext();
 
 export function CharsContextProvider({ children }) {
-  const sortingOptions = ["A-Z", "INT", "STR", "SPD", "DUR", "PWR", "CMB"];
-
   const [allCharacters, setAllCharacters] = useState(
     JSON.parse(localStorage.getItem("heroic-archive")) ?? []
   );
   const [searchInput, setSearchInput] = useState("");
-  const [filteredResults, setFilteredResults] = useState(allCharacters);
+  const [filteredResults, setFilteredResults] = useState([]);
+
+  // SORTING HOOKS CONTEXT
+  const sortingOptions = ["A-Z", "INT", "STR", "SPD", "DUR", "PWR", "CMB"];
   const anchorRef = useRef(null);
-  const [openPopper, setOpenPopper] = useState(false);
+  const [openPopper, togglePopper] = useToggle(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [sortingMethod, setSortingMethod] = useState({
     sort: sortingOptions[selectedIndex],
     reverseOrder: false,
   });
-  const [COTD, setCOTD] = useState(null);
-  const randomIndex = Math.random() * 562;
 
-  // Retrieve all characters
+  // Retrieve all characters from API
   const retrieveCharacters = async () => {
     try {
       await axios
         .get("https://akabab.github.io/superhero-api/api/all.json")
         .then((response) => {
           const data = response.data;
-          if (allCharacters === []) {
-            setAllCharacters(data);
-            // Store the full API data in local storage
-            localStorage.setItem("heroic-archive", JSON.stringify(data));
-          }
-          // Filter the data based on user's input
-          searchInput !== ""
-            ? setFilteredResults(
-                data.filter((obj) => {
-                  return obj.name
-                    .toLowerCase()
-                    .includes(searchInput.toLowerCase());
-                })
-              )
-            : setFilteredResults(data);
+          setAllCharacters(data);
+
+          // Store the full API data in local storage
+          localStorage.setItem("heroic-archive", JSON.stringify(data));
         });
     } catch (error) {
       console.error(error);
@@ -52,109 +41,112 @@ export function CharsContextProvider({ children }) {
   // Handle user's input
   const handleSearchInput = (keyword) => {
     setSearchInput(keyword);
-    if (keyword !== "") {
-      const filteredData = allCharacters.filter((char) => {
-        return char.name.toLowerCase().includes(keyword.toLowerCase());
-      });
-      setFilteredResults(filteredData);
-    }
   };
 
+  // SORTING CONTEXT
   const handleSortButtonClick = () => {
     setSortingMethod({
       ...sortingMethod,
       reverseOrder: !sortingMethod.reverseOrder,
     });
   };
-
-  const handleTogglePopper = () => {
-    setOpenPopper((prevOpen) => !prevOpen);
-  };
-
   const handleMenuItemClick = (event, index) => {
     setSelectedIndex(index);
-    setOpenPopper(false);
+    togglePopper();
     setSortingMethod({
       sort: sortingOptions[index],
       reverseOrder: false,
     });
   };
-
   const handleClosePopper = (event) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
-    setOpenPopper(false);
+    togglePopper();
   };
 
-  const switchSorting = (sortType, sortOrder, data) => {
-    switch (sortType) {
-      case "INT":
-        data.sort((charA, charB) => {
-          return sortOrder
-            ? charB.powerstats.intelligence - charA.powerstats.intelligence
-            : charA.powerstats.intelligence - charB.powerstats.intelligence;
-        });
-        break;
-      case "STR":
-        data.sort((charA, charB) => {
-          return sortOrder
-            ? charB.powerstats.strength - charA.powerstats.strength
-            : charA.powerstats.strength - charB.powerstats.strength;
-        });
-        break;
-      case "SPD":
-        data.sort((charA, charB) => {
-          return sortOrder
-            ? charB.powerstats.speed - charA.powerstats.speed
-            : charA.powerstats.speed - charB.powerstats.speed;
-        });
-        break;
-      case "DUR":
-        data.sort((charA, charB) => {
-          return sortOrder
-            ? charB.powerstats.durability - charA.powerstats.durability
-            : charA.powerstats.durability - charB.powerstats.durability;
-        });
-        break;
-      case "PWR":
-        data.sort((charA, charB) => {
-          return sortOrder
-            ? charB.powerstats.power - charA.powerstats.power
-            : charA.powerstats.power - charB.powerstats.power;
-        });
-        break;
-      case "CMB":
-        data.sort((charA, charB) => {
-          return sortOrder
-            ? charB.powerstats.combat - charA.powerstats.combat
-            : charA.powerstats.combat - charB.powerstats.combat;
-        });
-        break;
-      default:
-        data.sort((charA, charB) => {
-          return sortOrder ? charB.id - charA.id : charA.id - charB.id;
-        });
+  // FILTER CONTEXT
+  const [raceFilters, setRaceFilters] = useState([]);
+  const [filterHuman, toggleFilterHuman] = useToggle(false);
+  const [filterMutant, toggleFilterMutant] = useToggle(false);
+  const [filterRadiation, toggleFilterRadiation] = useToggle(false);
+  const [filterCyborg, toggleFilterCyborg] = useToggle(false);
+  const [filterEternal, toggleFilterEternal] = useToggle(false);
+  const [filterUnknown, toggleFilterUnknown] = useToggle(false);
+  const [filterOthers, toggleFilterOthers] = useToggle(false);
+  const checkboxList = [
+    {
+      race: "Human",
+      filter: filterHuman,
+      toggle: toggleFilterHuman,
+    },
+    {
+      race: "Mutant",
+      filter: filterMutant,
+      toggle: toggleFilterMutant,
+    },
+    {
+      race: "Radiation",
+      filter: filterRadiation,
+      toggle: toggleFilterRadiation,
+    },
+    {
+      race: "Cyborg",
+      filter: filterCyborg,
+      toggle: toggleFilterCyborg,
+    },
+    {
+      race: "Eternal",
+      filter: filterEternal,
+      toggle: toggleFilterEternal,
+    },
+    {
+      race: "Unknown",
+      filter: filterUnknown,
+      toggle: toggleFilterUnknown,
+    },
+    {
+      race: "Others",
+      filter: filterOthers,
+      toggle: toggleFilterOthers,
+    },
+  ];
+  const handleCheckboxClick = (event, checkbox) => {
+    checkbox.toggle();
+    if (event.target.checked) {
+      setRaceFilters([...raceFilters, event.target.value]);
+    } else {
+      setRaceFilters(
+        raceFilters.filter((filterType) => filterType !== event.target.value)
+      );
     }
-    return data;
   };
 
   const contextValue = {
+    // Context for search and filter results
     allCharacters,
-    anchorRef,
-    filteredResults,
-    handleClosePopper,
-    handleMenuItemClick,
-    handleSearchInput,
-    handleSortButtonClick,
-    handleTogglePopper,
-    openPopper,
     retrieveCharacters,
     searchInput,
+    handleSearchInput,
+    filteredResults,
+    setFilteredResults,
+
+    // Context for sorting
+    sortingOptions,
+    anchorRef,
+    openPopper,
+    togglePopper,
     selectedIndex,
     sortingMethod,
-    sortingOptions,
-    switchSorting,
+    handleSortButtonClick,
+    handleMenuItemClick,
+    handleClosePopper,
+
+    // Context for filters
+    checkboxList,
+    handleCheckboxClick,
+    raceFilters,
+    setRaceFilters,
   };
 
   return (
@@ -163,7 +155,6 @@ export function CharsContextProvider({ children }) {
     </CharsContext.Provider>
   );
 }
-
 export function useCharsContext() {
   return useContext(CharsContext);
 }
