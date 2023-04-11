@@ -5,15 +5,14 @@ import { useToggle } from "../hooks/useToggle";
 const CharsContext = createContext();
 
 export function CharsContextProvider({ children }) {
-  const sortingOptions = ["A-Z", "INT", "STR", "SPD", "DUR", "PWR", "CMB"];
-
   const [allCharacters, setAllCharacters] = useState(
     JSON.parse(localStorage.getItem("heroic-archive")) ?? []
   );
   const [searchInput, setSearchInput] = useState("");
-  const [filteredResults, setFilteredResults] = useState(allCharacters);
+  const [filteredResults, setFilteredResults] = useState([]);
 
   // SORTING HOOKS CONTEXT
+  const sortingOptions = ["A-Z", "INT", "STR", "SPD", "DUR", "PWR", "CMB"];
   const anchorRef = useRef(null);
   const [openPopper, togglePopper] = useToggle(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -33,17 +32,6 @@ export function CharsContextProvider({ children }) {
 
           // Store the full API data in local storage
           localStorage.setItem("heroic-archive", JSON.stringify(data));
-
-          // Filter the data based on user's input
-          searchInput !== ""
-            ? setFilteredResults(
-                data.filter((obj) => {
-                  return obj.name
-                    .toLowerCase()
-                    .includes(searchInput.toLowerCase());
-                })
-              )
-            : setFilteredResults(data);
         });
     } catch (error) {
       console.error(error);
@@ -53,12 +41,6 @@ export function CharsContextProvider({ children }) {
   // Handle user's input
   const handleSearchInput = (keyword) => {
     setSearchInput(keyword);
-    if (keyword !== "") {
-      const filteredData = allCharacters.filter((char) => {
-        return char.name.toLowerCase().includes(keyword.toLowerCase());
-      });
-      setFilteredResults(filteredData);
-    }
   };
 
   // SORTING CONTEXT
@@ -83,20 +65,88 @@ export function CharsContextProvider({ children }) {
     togglePopper();
   };
 
+  // FILTER CONTEXT
+  const [raceFilters, setRaceFilters] = useState([]);
+  const [filterHuman, toggleFilterHuman] = useToggle(false);
+  const [filterMutant, toggleFilterMutant] = useToggle(false);
+  const [filterRadiation, toggleFilterRadiation] = useToggle(false);
+  const [filterCyborg, toggleFilterCyborg] = useToggle(false);
+  const [filterEternal, toggleFilterEternal] = useToggle(false);
+  const [filterUnknown, toggleFilterUnknown] = useToggle(false);
+  const [filterOthers, toggleFilterOthers] = useToggle(false);
+  const checkboxList = [
+    {
+      race: "Human",
+      filter: filterHuman,
+      toggle: toggleFilterHuman,
+    },
+    {
+      race: "Mutant",
+      filter: filterMutant,
+      toggle: toggleFilterMutant,
+    },
+    {
+      race: "Radiation",
+      filter: filterRadiation,
+      toggle: toggleFilterRadiation,
+    },
+    {
+      race: "Cyborg",
+      filter: filterCyborg,
+      toggle: toggleFilterCyborg,
+    },
+    {
+      race: "Eternal",
+      filter: filterEternal,
+      toggle: toggleFilterEternal,
+    },
+    {
+      race: "Unknown",
+      filter: filterUnknown,
+      toggle: toggleFilterUnknown,
+    },
+    {
+      race: "Others",
+      filter: filterOthers,
+      toggle: toggleFilterOthers,
+    },
+  ];
+  const handleCheckboxClick = (event, checkbox) => {
+    checkbox.toggle();
+    if (event.target.checked) {
+      setRaceFilters([...raceFilters, event.target.value]);
+    } else {
+      setRaceFilters(
+        raceFilters.filter((filterType) => filterType !== event.target.value)
+      );
+    }
+  };
+
   const contextValue = {
-    anchorRef,
-    filteredResults,
-    handleClosePopper,
-    handleMenuItemClick,
-    handleSearchInput,
-    handleSortButtonClick,
-    openPopper,
+    // Context for search and filter results
+    allCharacters,
     retrieveCharacters,
     searchInput,
+    handleSearchInput,
+    filteredResults,
+    setFilteredResults,
+
+    // Context for sorting
+    sortingOptions,
+    anchorRef,
+    openPopper,
+    togglePopper,
     selectedIndex,
     sortingMethod,
-    sortingOptions,
-    togglePopper,
+    handleSortButtonClick,
+    handleMenuItemClick,
+    handleClosePopper,
+
+    // Context for filters
+    checkboxList,
+    handleCheckboxClick,
+    raceFilters,
+    setRaceFilters,
   };
 
   return (
@@ -105,7 +155,6 @@ export function CharsContextProvider({ children }) {
     </CharsContext.Provider>
   );
 }
-
 export function useCharsContext() {
   return useContext(CharsContext);
 }

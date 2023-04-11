@@ -5,20 +5,69 @@ import { useCharsContext } from "../../../context/CharsContext";
 import { useSort } from "../../../hooks/useSort";
 
 export default function DisplayResults() {
-  const { filteredResults, retrieveCharacters, searchInput, sortingMethod } =
-    useCharsContext();
+  const {
+    allCharacters,
+    retrieveCharacters,
+    searchInput,
+
+    filteredResults,
+    setFilteredResults,
+    raceFilters,
+
+    sortingMethod,
+  } = useCharsContext();
   const [visibleChars, setVisibleChars] = useState(24);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
     retrieveCharacters()
-      .then(() => setIsLoading(false))
+      .then(() => {
+        const filteredData = allCharacters.filter((char) =>
+          raceFilters.length > 0
+            ? raceFilters.includes(char.appearance.race)
+            : allCharacters
+        );
+
+        console.log(filteredData, "filter");
+
+        // Filter the data based on user's input
+        if (searchInput !== "") {
+          const queriedData = filteredData.filter((char) => {
+            return char.name.toLowerCase().includes(searchInput.toLowerCase());
+          });
+          setFilteredResults(queriedData);
+        } else {
+          setFilteredResults(filteredData);
+        }
+
+        // Filter the data based on user's input
+        // if (searchInput !== "") {
+        //   const queriedData = allCharacters.filter((char) => {
+        //     return char.name.toLowerCase().includes(searchInput.toLowerCase());
+        //   });
+
+        // const filteredData = queriedData.filter((obj) =>
+        //   raceFilters.length > 0
+        //     ? raceFilters.every(
+        //         (filterTag) => obj.appearance.race === filterTag
+        //       )
+        //     : queriedData
+        // );
+
+        // console.log(filteredData, "filtered");
+
+        //   setFilteredResults(queriedData);
+        // } else {
+        //   setFilteredResults(allCharacters);
+        // }
+        setIsLoading(false);
+      })
       .catch((error) => {
         console.error(error);
         setIsLoading(false);
       });
-  }, [searchInput]);
+  }, [searchInput, raceFilters]);
 
   const dataCopy = [...filteredResults];
   const sortCharacterCards = useSort(
