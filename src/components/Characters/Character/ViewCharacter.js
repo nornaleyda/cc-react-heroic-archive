@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Typography, Paper, LinearProgress, colors } from "@mui/material";
+import { Typography, Paper, LinearProgress } from "@mui/material";
 import { useParams } from "react-router-dom";
 import * as React from "react";
 import Box from "@mui/material/Box";
@@ -30,17 +30,8 @@ export default function ViewCharacter() {
 
   // render character details
 
-  const {
-    name,
-    slug,
-    powerstats,
-    appearance,
-    biography,
-    work,
-    connections,
-    images,
-  } = character;
-
+  const { name, powerstats, appearance, biography, work, connections, images } =
+    character;
 
   return (
     <Box
