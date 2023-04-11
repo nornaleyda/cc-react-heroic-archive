@@ -18,6 +18,10 @@ code {
     monospace;
 }
 
+a {
+  text-decoration: none;
+}
+
 .wrapper-container {
   margin-left: 20px;
   background-color: #212529;
