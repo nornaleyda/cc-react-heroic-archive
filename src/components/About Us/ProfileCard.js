@@ -1,7 +1,7 @@
 import { Box, Card, CardCover, CardContent, Typography } from "@mui/joy";
 
 export default function ProfileCard({ developer }) {
-  const { name, biography, url } = developer;
+  const { name, biography, url, image } = developer;
 
   return (
     <div className="main-container">
@@ -30,8 +30,8 @@ export default function ProfileCard({ developer }) {
         <Card
           variant="outlined"
           sx={{
-            minHeight: "280px",
-            minwidth: "375px",
+            minHeight: "360px",
+            minwidth: "640px",
             width: "20vw",
             backgroundColor: "#000",
             borderColor: "#000",
@@ -43,12 +43,7 @@ export default function ProfileCard({ developer }) {
               borderColor: "#777",
             }}
           >
-            <img
-              src="https://images.unsplash.com/photo-1502657877623-f66bf489d236?auto=format&fit=crop&w=800"
-              srcSet="https://images.unsplash.com/photo-1502657877623-f66bf489d236?auto=format&fit=crop&w=800&dpr=2 2x"
-              loading="lazy"
-              alt=""
-            />
+            <img src={image} srcSet={`${image} 1x`} loading="lazy" alt="" />
           </CardCover>
           <CardContent
             sx={{
@@ -64,9 +59,7 @@ export default function ProfileCard({ developer }) {
       </Box>
       <div className="wrapper-container">
         <div className="text">
-          <Typography className="text text-bold">
-            {name}
-          </Typography>
+          <Typography className="text text-bold">{name}</Typography>
           <Typography className="text">{biography}</Typography>
           <div className="sm-icons">
             <a href={url.github} alt="github" target="new">

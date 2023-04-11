@@ -208,19 +208,49 @@ body {
   }
 }
 
+// .name{
+//   display: flex;
+//   align-content: center;
+// }
+
+.stats-COTD {
+  padding-left: 40px;
+  padding-top: 10px;
+  font-size: medium;
+}
+
 .panel {
+  background-color:#fff;
+  border:solid 2px #000;
+  box-shadow:0 6px 6px -6px #000;
+  flex:1 1;
+  height:450px;
+  margin:1vmin;
+  overflow:hidden;
+  position:relative;
+}
+
+.panel1 {
   background-color: #fff;
   border: solid 2px #000;
   box-shadow: 0 6px 6px -6px #000;
-  display: inline-block;
-  flex: 1 1;
-  height: 200px;
+  height: 280px;
   margin: 1vmin;
   overflow: hidden;
-  position: relative;
 }
 
-.text {
+.panel2 {
+  background-color: #fff;
+  border: solid 2px #000;
+  box-shadow: 0 6px 6px -6px #000;
+  height: 150px;
+  width: 1112px;
+  margin-top: 44px;
+  margin-left: 9px;
+  overflow: hidden;
+}
+
+.text1 {
   background-color: #fff;
   border: solid 2px #000;
   margin: 0;
@@ -245,10 +275,10 @@ body {
   background-color: #fff;
   border: solid 2px #000;
   border-radius: 12px;
-  display: inline-block;
   margin: 0.5em;
   padding: 0.5em 1em;
   position: relative;
+  font-size: 20px;
 }
 
 .speech:before {
@@ -284,23 +314,13 @@ body {
 .comic {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   font-family: "Comic Sans", cursive;
   padding: 1vmin;
 }
 
-.panel {
-  background-color: #fff;
-  border: solid 2px #000;
-  box-shadow: 0 6px 6px -6px #000;
-  display: inline-block;
-  flex: 1 1;
-  height: 350px;
-  margin: 1vmin;
-  overflow: hidden;
-  position: relative;
-}
-
-.text {
+.text2 {
   background-color: #fff;
   border: solid 2px #000;
   margin: 0;
@@ -314,33 +334,18 @@ body {
   transform: skew(-15deg);
 }
 
-.panel:nth-child(2) {
-  flex-basis: 200px;
-}
-.panel:nth-child(3) {
-  flex-basis: 200px;
-}
-.panel:nth-child(4) {
-  flex-basis: 200px;
-}
-.panel:nth-child(5) {
-  flex-basis: 200px;
-}
-.panel:nth-child(6) {
-  flex-basis: 200px;
-}
-.panel:nth-child(7) {
+.panel1 {
   flex-basis: 400px;
 }
-.panel:nth-child(8) {
+.panel2 {
   flex-basis: 200px;
 }
-.panel:nth-child(9) {
+.panel {
   flex-basis: 200px;
 }
 
 /* background colours */
 
-.panel:nth-child(4n + 1) {
+.panel1 {
   background-image: radial-gradient(circle, lightblue, deepskyblue);
 }
