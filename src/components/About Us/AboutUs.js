@@ -3,6 +3,8 @@ import Footer from "./Footer";
 import ProfileCard from "./ProfileCard";
 import "../../styles/main.scss";
 import johanan from "../../images/joeee.jpeg";
+import farhana from "../../images/farhana.jpeg";
+import norna from "../../images/norna.jpeg";
 
 const devDetails = [
   {
@@ -20,7 +22,7 @@ const devDetails = [
     id: 2,
     name: "Johanan Samuel",
     biography:
-      "Johanan's journey to becoming a web development superhero began in his early years, where he excelled in Information Technology. During his Degree program, he added certificates in IT Support to upgrade his technical skills. With his knowledge in HTML, CSS, PHP and SQL, his commitment to stay on top of the latest trends like JavaScript, React, SASS and TypeScript, Johanan is a true hero in the world of web development.",
+      "Johanan is a tech savvy hero with a unique talent for web development. With his background in Information Technology and certifications in IT Support, he has honed his programming skills. His final year project at University Selangor allowed him to master HTML, CSS, PHP, and SQL. He is now focused on mastering the latest front-end development trends like JavaScript, React, and TypeScript. With his unparalleled technical expertise and a commitment to excellence, Johanan is a true hero in the world of web development.",
     image: johanan,
     url: {
       github: "https://github.com/joeeeee7",
@@ -32,10 +34,10 @@ const devDetails = [
     name: "Nornaleyda Rosli",
     biography:
       "Norna's superpower is her proficiency in coding languages. Armed with a bachelor's degree in Science Computer: Multimedia Computer, she quickly mastered HTML, CSS, and Javascript. Now, Norna is focused on expanding her abilities with React.js, Typescript, and sass in order to become the ultimate front-end developer. With her unwavering determination and unstoppable drive to save the world, Norna is a true hero in the making.",
-    image: "",
+    image: norna,
     url: {
       github: "https://github.com/nornaleyda",
-      linkedIn: "",
+      linkedIn: "https://www.linkedin.com/in/nornaleyda-rosli-866269261",
     },
   },
   {
@@ -43,10 +45,10 @@ const devDetails = [
     name: "Nurul Farhana Alias",
     biography:
       "Hana, the villain with a knack for technology, has used her skills to cause chaos in the digital realm. She's a master of HTML, CSS, and JavaScript and has a deep understanding of frontend frameworks and libraries, such as React. Her cunning problem-solving skills and strategic mind make her a formidable opponent to any superhero. Hana stays up-to-date with the latest frontend development trends and techniques, giving her a significant advantage in her villainous pursuits.",
-    image: "",
+    image: farhana,
     url: {
       github: "https://github.com/FarhanaAlias",
-      linkedIn: "",
+      linkedIn: "https://www.linkedin.com/in/farhana-alias-658401182",
     },
   },
 ];
@@ -61,13 +63,6 @@ export default function AboutUs() {
 
   return (
     <Grid className="profiles-wrapper" container>
-      <div className="page-header-bg">
-        <h1 className="page-header">About Us</h1>
-        <p className="page-header-p">
-          About us is a long established fact that a reader will be distracted
-          by the readable content of a page when looking at its.
-        </p>
-      </div>
       {renderDevDetails}
       <Footer></Footer>
     </Grid>
